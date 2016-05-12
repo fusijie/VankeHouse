@@ -1,0 +1,316 @@
+<krpano version="1.17.4" title="万科城115㎡户型" onstart="startup();">
+
+	<include url="skin/vtourskin.xml" />
+	<!-- <plugin name="editor" url="plugins/editor.swf" keep="true" /> -->
+
+
+	<!-- set skin settings: bingmaps? gyro? thumbnail controlling? tooltips? -->
+	<skin_settings bingmaps="false"
+	               bingmaps_key=""
+	               bingmaps_zoombuttons="false"
+	               gyro="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               controlbar_offset="20"
+	               />
+
+	<!-- set optional skin logo url -->
+	<layer name="skin_logo" url="logo.png" scale="1" opened_onclick="" />
+	   <plugin name="soundinterface"
+				url="%SWFPATH%/plugins/soundinterface.swf"
+				alturl="%SWFPATH%/plugins/soundinterface.js"
+				rootpath=""
+				preload="true"
+				keep="true"
+				volume="1.0"
+				/>
+	<!-- 这是自动旋转，可以进行设置 -->
+<autorotate enabled="True" waittime="2" accel="1" speed="3" horizon="0" tofov="off" />
+<events onmousedown="set(bt,0);" />   
+  
+<action name="bombtimer">  
+set(autorotate.enabled,true);  
+set(bt,%1);  
+add(bt,1);  
+delayedcall(1, bombtimer(get(bt)));   
+copy(bt_1,autorotate.speed);  
+div(bt_2,360,bt_1);  
+add(bt_2,autorotate.waittime);  
+if(bt GE bt_2, set(bt,0); nextscene(););  
+</action>  
+  
+<action name="nextscene">  
+set(ns, get(scene[get(xml.scene)].index));  
+set(maxs, get(scene.count));  
+add(ns,1);  
+if(ns == maxs, set(ns,0));  
+loadscene(get(scene[get(ns)].name), null, MERGE, BLEND(1.5));  
+</action>  
+
+	<action name="startup">
+		if(startscene === null, copy(startscene,scene[0].name));
+		loadscene(get(startscene), null, MERGE);
+		if(autorotate.enabled,bombtimer(0));  
+		playsound(bggsnd, '%SWFPATH%/bg.mp3', 0);
+	</action>
+
+	
+	<scene name="scene_101" title="客厅餐厅" onstart="" thumburl="panos/101.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="569.905" vlookat="0.791" fovtype="MFOV" fov="119.932" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/101.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2866" tiledimageheight="2866">
+				<cube url="panos/101.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1434" tiledimageheight="1434">
+				<cube url="panos/101.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="718" tiledimageheight="718">
+				<cube url="panos/101.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/101.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="80.802" atv="4.737" linkedscene="scene_102" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-140.598" atv="3.926" linkedscene="scene_112" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="137.938" atv="8.028" linkedscene="scene_104" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-48.318" atv="6.307" linkedscene="scene_107" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="-67.372" atv="6.421" linkedscene="scene_108" />
+		<hotspot name="spot6" style="skin_hotspotstyle" ath="113.434" atv="7.448" linkedscene="scene_106" />
+	</scene>
+
+	<scene name="scene_102" title="厨房" onstart="" thumburl="panos/102.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-497.346" vlookat="7.702" fovtype="MFOV" fov="107.409" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/102.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="3184" tiledimageheight="3184">
+				<cube url="panos/102.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1536" tiledimageheight="1536">
+				<cube url="panos/102.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/102.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/102.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="11.792" atv="14.814" linkedscene="scene_101" />
+
+	</scene>
+
+	
+
+	<scene name="scene_104" title="卧室" onstart="" thumburl="panos/104.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-92.572" vlookat="3.188" fovtype="MFOV" fov="113.860" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/104.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="3184" tiledimageheight="3184">
+				<cube url="panos/104.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1536" tiledimageheight="1536">
+				<cube url="panos/104.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/104.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/104.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="89.869" atv="11.343" linkedscene="scene_101" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="114.083" atv="14.812" linkedscene="scene_106" />
+
+	</scene>
+
+	<scene name="scene_105" title="书房" onstart="" thumburl="panos/105.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-123.148" vlookat="1.165" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/105.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="3184" tiledimageheight="3184">
+				<cube url="panos/105.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1536" tiledimageheight="1536">
+				<cube url="panos/105.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/105.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/105.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="106.524" atv="19.971" linkedscene="scene_106" />
+
+	</scene>
+
+	<scene name="scene_106" title="公卫" onstart="" thumburl="panos/106.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-75.019" vlookat="-0.165" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/106.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="3184" tiledimageheight="3184">
+				<cube url="panos/106.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1536" tiledimageheight="1536">
+				<cube url="panos/106.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/106.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/106.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="100.515" atv="14.990" linkedscene="scene_105" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-146.999" atv="10.908" linkedscene="scene_101" />
+		
+
+	</scene>
+
+	<scene name="scene_107" title="儿童房" onstart="" thumburl="panos/107.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.716" vlookat="-0.173" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/107.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="3184" tiledimageheight="3184">
+				<cube url="panos/107.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1536" tiledimageheight="1536">
+				<cube url="panos/107.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/107.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/107.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="53.808" atv="3.168" linkedscene="scene_101" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="65.805" atv="4.703" linkedscene="scene_108" />
+
+	</scene>
+
+	<scene name="scene_108" title="主卧" onstart="" thumburl="panos/108.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="102.675" vlookat="0.713" fovtype="MFOV" fov="108.700" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/108.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="3184" tiledimageheight="3184">
+				<cube url="panos/108.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1536" tiledimageheight="1536">
+				<cube url="panos/108.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/108.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/108.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="159.013" atv="3.799" linkedscene="scene_101" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="147.707" atv="3.391" linkedscene="scene_107" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="126.648" atv="3.578" linkedscene="scene_109" />
+
+	</scene>
+
+	<scene name="scene_109" title="主卫" onstart="" thumburl="panos/109.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-233.525" vlookat="5.941" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/109.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="3184" tiledimageheight="3184">
+				<cube url="panos/109.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1536" tiledimageheight="1536">
+				<cube url="panos/109.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/109.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/109.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="41.329" atv="4.352" linkedscene="scene_108" />
+
+	</scene>
+
+
+
+	<scene name="scene_112" title="阳台" onstart="" thumburl="panos/112.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="219.860" vlookat="-0.203" fovtype="MFOV" fov="108.762" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/112.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="3184" tiledimageheight="3184">
+				<cube url="panos/112.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1536" tiledimageheight="1536">
+				<cube url="panos/112.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/112.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/112.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="56.144" atv="10.098" linkedscene="scene_101" />
+
+	</scene>
+
+
+</krpano>
