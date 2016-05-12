@@ -13,7 +13,7 @@ rooms = [101, 102, 104, 105, 106, 107, 108, 109, 112]
 room_dir_0 = ['b', 'd', 'f', 'l', 'r', 'u']
 room_dir_1 = [{'key': 'l1', 'value': [1, 2]}, {'key': 'l2', 'value': [1, 2, 3]}, {'key': 'l3', 'value': [1, 2, 3, 4, 5, 6]}];
 
-img_info = []
+panos_img_info = []
 
 def _mkdir():
 	if os.path.exists('vanke/panos'):
@@ -37,21 +37,21 @@ def _mkdir():
 						file_name = z['key'] + '_' + y + '_' + str(w) + '_' + str(v+1) + '.jpg'
 						file_name = tiles_dir_2 + '/' + file_name
 						img_url = file_name.replace('vanke', 'http://vr.yyttww.com/wkc02')
-						img_info.append({'file_name': file_name, 'img_url': img_url});
+						panos_img_info.append({'file_name': file_name, 'img_url': img_url});
 
 
 def _download_preview_thumb():
-	preview_thumb_img_info = []
+	preview_thumb_panos_img_info = []
 	for room in rooms:
 		preview_file_name = 'vanke/panos/' + str(room) + '.tiles/preview.jpg'
 		preview_img_url = preview_file_name.replace('vanke', 'http://vr.yyttww.com/wkc02')
-		preview_thumb_img_info.append({'file_name': preview_file_name, 'img_url': preview_img_url});
+		preview_thumb_panos_img_info.append({'file_name': preview_file_name, 'img_url': preview_img_url});
 		thumb_file_name = 'vanke/panos/' + str(room) + '.tiles/thumb.jpg'
 		thumb_img_url = thumb_file_name.replace('vanke', 'http://vr.yyttww.com/wkc02')
-		preview_thumb_img_info.append({'file_name': thumb_file_name, 'img_url': thumb_img_url});
+		preview_thumb_panos_img_info.append({'file_name': thumb_file_name, 'img_url': thumb_img_url});
 
 	p = multiprocessing.Pool(40)
-	for img in preview_thumb_img_info:
+	for img in preview_thumb_panos_img_info:
 		file_name = img['file_name']
 		img_url = img['img_url']
 		# _download_img(img_url,file_name)
@@ -59,9 +59,9 @@ def _download_preview_thumb():
 	p.close()
 	p.join()
 
-def _download_imgs():
+def _download_panos():
 	p = multiprocessing.Pool(40)
-	for img in img_info:
+	for img in panos_img_info:
 		file_name = img['file_name'];
 		img_url = img['img_url'];
 		# _download_img(img_url,file_name)
@@ -88,5 +88,5 @@ def _download_img(img_url, file_name):
 if __name__ == '__main__':
 	_mkdir()
 	_download_preview_thumb()
-	_download_imgs()
+	_download_panos()
 
